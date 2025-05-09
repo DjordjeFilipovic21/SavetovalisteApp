@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.image.ImageView?>
+<HBox fx:id="topBar" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="app.TopBarController" alignment="CENTER" spacing="10" stylesheets="@light-theme.css">
+    <Button fx:id="undoButton" text="Back" onAction="#onUndoButtonClick" />
+    <Region fx:id="leftSpacer" HBox.hgrow="ALWAYS" />
+    <VBox alignment="CENTER" spacing="5" fx:id="titleContainer" visible="false" managed="false">
+        <HBox alignment="CENTER" spacing="5">
+            <Label text="   SAVETOVALIŠTE" style="-fx-font-size: 25px; -fx-font-weight: bold; " />
+            <Label text="&quot;NOVI POČETAK&quot;" style="-fx-font-size: 25px; -fx-font-style: italic;" />
+        </HBox>
+    </VBox>
+    <Region fx:id="centerSpacer" HBox.hgrow="ALWAYS" />
+    <ToggleButton text="☀" fx:id="themeToggleButton" onAction="#onThemeToggle"
+                  style="-fx-font-size: 16px; -fx-background-color: #f0f0f0; -fx-text-fill: #000000;
+    -fx-padding: 5 10; -fx-border-radius: 5; -fx-background-radius: 5;
+    -fx-border-color: #cccccc; -fx-border-width: 1;" />
+    <VBox alignment="CENTER" spacing="5" fx:id="profileContainer" visible="false" managed="false">
+        <Label text="Profile" style="-fx-font-size: 20px;" />
+    </VBox>
+</HBox>

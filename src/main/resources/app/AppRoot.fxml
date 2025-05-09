@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.BorderPane?>
+
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="app.AppRootController">
+    <fx:include source="TopBar.fxml" />
+
+    <BorderPane fx:id="mainContent" VBox.vgrow="ALWAYS" />
+</VBox>

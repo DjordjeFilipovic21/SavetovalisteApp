@@ -1,0 +1,18 @@
+/* Center the VBox and add padding */
+VBox {
+    -fx-alignment: center;
+}
+
+/* Style the buttons */
+Button {
+    -fx-font-size: 14px;
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+    -fx-padding: 10 20;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+}
+
+Button:hover {
+    -fx-background-color: #45a049;
+}

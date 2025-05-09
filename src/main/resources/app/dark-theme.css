@@ -1,0 +1,30 @@
+/* Set a dark background for the root container */
+VBox {
+    -fx-background-color: #2b2b2b;
+    -fx-alignment: center;
+}
+
+
+BorderPane {
+    -fx-background-color: #2b2b2b;
+}
+
+/* Style the labels with light text */
+Label {
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 18px;
+}
+
+/* Style the buttons with a dark background and light text */
+Button {
+    -fx-font-size: 14px;
+    -fx-background-color: #3c3f41;
+    -fx-text-fill: #ffffff;
+    -fx-padding: 10 20;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+}
+
+Button:hover {
+    -fx-background-color: #555555;
+}
