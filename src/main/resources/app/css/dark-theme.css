@@ -28,3 +28,31 @@ Button {
 Button:hover {
     -fx-background-color: #555555;
 }
+
+ListView {
+    -fx-background-color: #2b2b2b;
+    -fx-border-color: #444444;
+    -fx-border-radius: 5px;
+    -fx-padding: 5px;
+}
+
+.list-view .viewport {
+    -fx-background-color: #2b2b2b;
+}
+
+/* Style the ListView cells */
+.list-cell {
+    -fx-background-color: #2b2b2b;
+    -fx-border-color: #444444;
+    -fx-border-width: 0 0 1px 0;
+    -fx-padding: 5px;
+    -fx-text-fill: #ffffff;
+}
+
+.list-cell:hover {
+    -fx-background-color: #3c3f41;
+}
+
+.list-cell:empty {
+    -fx-background-color: transparent; /* Prevents empty cells from showing a background */
+}

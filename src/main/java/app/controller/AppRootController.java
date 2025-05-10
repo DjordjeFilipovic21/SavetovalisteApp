@@ -1,4 +1,4 @@
-package app;
+package app.controller;
 
 import javafx.animation.FadeTransition;
 import javafx.fxml.FXML;
@@ -32,7 +32,7 @@ public class AppRootController {
 
     @FXML
     private void initialize() {
-        navigateToPage("/app/MainPage.fxml");
+        navigateToPage("/app/fxml/MainPage.fxml");
     }
 
     public void navigateToPage(String fxmlPath) {
@@ -42,7 +42,6 @@ public class AppRootController {
                 fadeOut.setFromValue(1.0);
                 fadeOut.setToValue(0.0);
                 fadeOut.setOnFinished(event -> {
-                    // Load the new page after fade-out
                     loadNewPage(fxmlPath);
                 });
                 fadeOut.play();
@@ -57,16 +56,19 @@ public class AppRootController {
 
     private void loadNewPage(String fxmlPath) {
         try {
+
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
             Parent page = loader.load();
+            FadeTransition fadeIn = new FadeTransition(Duration.millis(400), page);
+            fadeIn.setFromValue(0.5);
+            fadeIn.setToValue(1.0);
+            fadeIn.play();
             mainContent.setCenter(page);
 
-            // Update the TopBar
+
             TopBarController.getInstance().pushOntoStack(fxmlPath);
             TopBarController.getInstance().updateButtonStates();
             TopBarController.getInstance().updateTitleAndProfileVisibility(fxmlPath);
-
-
 
         } catch (IOException e) {
             System.err.println("Failed to load FXML: " + fxmlPath);

@@ -1,4 +1,4 @@
-package app;
+package app.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
@@ -22,6 +22,6 @@ public class LoginPageController {
 
     @FXML
     private void onSubmit() {
-        AppRootController.getInstance().navigateToPage("/app/HomePage.fxml");
+        AppRootController.getInstance().navigateToPage("/app/fxml/HomePage.fxml");
     }
 }

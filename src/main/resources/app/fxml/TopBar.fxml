@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.image.ImageView?>
-<HBox fx:id="topBar" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="app.TopBarController" alignment="CENTER" spacing="10" stylesheets="@light-theme.css">
+<HBox fx:id="topBar" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="app.controller.TopBarController" alignment="CENTER" spacing="10" style="-fx-padding: 10px" stylesheets="@../css/light-theme.css">
     <Button fx:id="undoButton" text="Back" onAction="#onUndoButtonClick" />
     <Region fx:id="leftSpacer" HBox.hgrow="ALWAYS" />
     <VBox alignment="CENTER" spacing="5" fx:id="titleContainer" visible="false" managed="false">

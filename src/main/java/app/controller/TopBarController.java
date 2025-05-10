@@ -1,18 +1,12 @@
-package app;
+package app.controller;
 
-import javafx.animation.FadeTransition;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ToggleButton;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.util.Duration;
 
-import java.awt.*;
-import java.io.IOException;
 import java.util.Objects;
 import java.util.Stack;
 
@@ -92,22 +86,23 @@ public class TopBarController {
     @FXML
     private void onThemeToggle() {
         boolean isDarkMode = themeToggleButton.isSelected();
-        String theme = isDarkMode ? "dark-theme.css" : "light-theme.css";
+        String theme = isDarkMode ? "/app/css/dark-theme.css" : "/app/css/light-theme.css";
         themeToggleButton.setText(isDarkMode ? "🌙" : "☀");
         applyTheme(theme);
     }
 
     private void applyTheme(String theme) {
-        if (contentArea != null) {
-            contentArea.getScene().getStylesheets().clear();
-            contentArea.getScene().getStylesheets().add(Objects.requireNonNull(getClass().getResource(theme)).toExternalForm());
+        Scene scene = contentArea.getScene();
+        if (scene != null) {
+            scene.getStylesheets().clear(); // Clear existing stylesheets
+            scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource(theme)).toExternalForm());
         }
     }
 
 
 
     public void updateTitleAndProfileVisibility(String currentPage) {
-        boolean isMainPage = "/app/MainPage.fxml".equals(currentPage);
+        boolean isMainPage = "/app/fxml/MainPage.fxml".equals(currentPage);
         titleContainer.setVisible(!isMainPage);
         titleContainer.setManaged(!isMainPage);
         profileContainer.setVisible(!isMainPage);

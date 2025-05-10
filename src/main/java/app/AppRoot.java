@@ -25,7 +25,7 @@ public class AppRoot {
 
     private void initializeUI() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/app/AppRoot.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/app/fxml/AppRoot.fxml"));
             Parent root = loader.load();
             Scene scene = new Scene(root, 1280, 720);
             stage.setTitle("Main Page");
