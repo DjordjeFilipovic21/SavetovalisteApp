@@ -1,6 +1,7 @@
 package app.controller;
 
 import app.model.Session;
+import app.repository.SessionRepository;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.ListView;
@@ -23,7 +24,7 @@ public class HomePageController {
     }
 
     private void loadSessions() {
-        app.SessionRepository sessionDAO = new app.SessionRepository();
+        SessionRepository sessionDAO = new SessionRepository();
         for (Session session : sessionDAO.getAllSessions()) {
             sessionListView.getItems().add(session.getTitle() + ": " + session.getDescription());
         }

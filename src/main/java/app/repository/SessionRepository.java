@@ -1,4 +1,4 @@
-package app;
+package app.repository;
 
 import app.model.Session;
 import app.repository.CustomRepository;

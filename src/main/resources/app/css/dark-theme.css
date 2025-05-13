@@ -9,10 +9,34 @@ BorderPane {
     -fx-background-color: #2b2b2b;
 }
 
+GridPane {
+    -fx-background-color: #2b2b2b;
+}
+
+StackPane {
+    -fx-background-color: #2b2b2b;
+}
+
+HBox {
+    -fx-background-color: #2b2b2b;
+}
+
+TextField, PasswordField {
+    -fx-background-color: #3c3f41; /* Dark background */
+    -fx-text-fill: #ffffff;       /* Light text color */
+    -fx-border-color: #555555;   /* Border color */
+    -fx-border-radius: 5px;      /* Rounded corners */
+    -fx-background-radius: 5px;  /* Rounded corners */
+    -fx-padding: 5px;            /* Padding inside the field */
+}
+
+TextField:focused, PasswordField:focused {
+    -fx-border-color: #4CAF50;   /* Highlight border when focused */
+}
+
 /* Style the labels with light text */
 Label {
     -fx-text-fill: #ffffff;
-    -fx-font-size: 18px;
 }
 
 /* Style the buttons with a dark background and light text */
@@ -55,4 +79,16 @@ ListView {
 
 .list-cell:empty {
     -fx-background-color: transparent; /* Prevents empty cells from showing a background */
+}
+
+ImageView {
+    -fx-effect: null;
+    -fx-opacity: 1.0;
+    -fx-transition: 0.3s ease-in-out;
+}
+
+/* Hover state for the ImageView */
+ImageView:hover {
+    -fx-effect: innershadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0.5, 0, 0);
+    -fx-opacity: 0.8; /* Slightly dim the image */
 }

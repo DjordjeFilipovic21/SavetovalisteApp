@@ -11,6 +11,7 @@ Button {
     -fx-padding: 10 20;
     -fx-border-radius: 5;
     -fx-background-radius: 5;
+    -fx-cursor: hand;
 }
 
 Button:hover {
@@ -43,6 +44,19 @@ ListView {
 
 .list-cell:empty {
     -fx-background-color: transparent; /* Prevents empty cells from showing a background */
+}
+
+ImageView {
+    -fx-effect: null;
+    -fx-opacity: 1.0;
+    -fx-transition: 0.3s ease-in-out;
+}
+
+/* Hover state for the ImageView */
+ImageView:hover {
+    -fx-effect: innershadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0.5, 0, 0);
+    -fx-opacity: 0.8; /* Slightly dim the image */
+    -fx-cursor: hand;
 }
 
 

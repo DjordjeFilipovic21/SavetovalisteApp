@@ -1,5 +1,6 @@
 package app.controller;
 
+import app.repository.PsychotherapeutRepository;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -15,6 +16,8 @@ public class LoginPageController {
     @FXML
     private PasswordField passwordField;
 
+    private final PsychotherapeutRepository psychotherapeutRepository = new PsychotherapeutRepository();
+
     @FXML
     private void initialize() {
         TopBarController.getInstance().setContentArea(contentArea);
@@ -22,6 +25,16 @@ public class LoginPageController {
 
     @FXML
     private void onSubmit() {
-        AppRootController.getInstance().navigateToPage("/app/fxml/HomePage.fxml");
+        String username = usernameField.getText();
+        String password = passwordField.getText();
+
+        int id = psychotherapeutRepository.validateCredentials(username, password);
+        if (id != -1) {
+            AppRootController.getInstance().navigateToPage("/app/fxml/HomePage.fxml");
+            TopBarController.getInstance().setUserId(id);
+            TopBarController.getInstance().onLogin();
+        } else {
+            TopBarController.getInstance().showErrorAlert("Invalid Credentials", "Wrong username or password.");
+        }
     }
 }
