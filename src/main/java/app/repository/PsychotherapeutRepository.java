@@ -68,4 +68,23 @@ public class PsychotherapeutRepository extends CustomRepository {
         }
         return null;
     }
+
+    public void updateImgId(int userId, Integer imgId) {
+        String sql = "UPDATE psychotherapeuts SET psy_img_id = ? WHERE psy_id = ?";
+
+        try (Connection connection = getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+
+            if (imgId == null) {
+                statement.setNull(1, java.sql.Types.INTEGER);
+            } else {
+                statement.setInt(1, imgId);
+            }
+            statement.setInt(2, userId);
+            statement.executeUpdate();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

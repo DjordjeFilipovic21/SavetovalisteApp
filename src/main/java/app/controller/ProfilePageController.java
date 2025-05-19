@@ -4,7 +4,9 @@ import app.model.Psychotherapist;
 import app.repository.ImageRepository;
 import app.repository.PsychotherapeutRepository;
 import javafx.animation.PauseTransition;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -19,6 +21,7 @@ public class ProfilePageController {
 
     @FXML
     public ImageView profileImage;
+    public Button removePicture;
 
     @FXML
     private TextField usernameField;
@@ -53,9 +56,12 @@ public class ProfilePageController {
             if(imgId == 0) {
                 Image plusImage = new Image(Objects.requireNonNull(getClass().getResource("/app/images/profile.png")).toExternalForm());
                 profileImage.setImage(plusImage);
+                removePicture.setDisable(true);
             }
-            else
+            else{
                 profileImage.setImage(new Image(new ByteArrayInputStream(imageRepository.getImageDataById(imgId))));
+                removePicture.setDisable(false);
+            }
 
             usernameField.setText(psychotherapist.getUsername());
             fullNameField.setText(psychotherapist.getFullName());
@@ -64,11 +70,18 @@ public class ProfilePageController {
     }
 
     @FXML
-    private void onBackButtonClick() {
+    private void onSave() {
 
     }
 
-    @FXML void onChangePictureClick() {
-        System.out.println("Change picture clicked");
+    @FXML void onRemovePicture() {
+        TopBarController.getInstance().onRemoveImage();
+        loadProfileData(TopBarController.getInstance().getUserId());
+    }
+
+    @FXML
+    public void onProfileImageClick() {
+        TopBarController.getInstance().onUploadImage();
+        loadProfileData(TopBarController.getInstance().getUserId());
     }
 }

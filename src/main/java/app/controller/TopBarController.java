@@ -233,14 +233,20 @@ public class TopBarController {
     }
 
     @FXML
-    private void onUploadImage() {
+    public void onUploadImage() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg"));
         File selectedFile = fileChooser.showOpenDialog(new Stage());
 
         if (selectedFile != null) {
             try (FileInputStream fis = new FileInputStream(selectedFile)) {
-                uploadImageToDatabase(selectedFile.getName(), fis);
+                int newImgId = imageRepository.uploadImageToDatabase(selectedFile.getName(), fis);
+
+                if (newImgId > 0 && userId != null) {
+                    psychotherapeutRepository.updateImgId(userId, newImgId);
+                    updateProfileImage(userId);
+                }
+
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -276,5 +282,11 @@ public class TopBarController {
     }
     public void setImgVisible(boolean imgVisible) {
         this.imgVisible.set(imgVisible);
+    }
+
+    public void onRemoveImage() {
+        psychotherapeutRepository.updateImgId(userId, null);
+        Image plusImage = new Image(Objects.requireNonNull(getClass().getResource("/app/images/profile.png")).toExternalForm());
+        profileImage.setImage(plusImage);
     }
 }

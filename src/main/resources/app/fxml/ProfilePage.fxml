@@ -8,8 +8,8 @@
         <HBox spacing="20">
             <!-- Left side: Profile picture -->
             <VBox alignment="CENTER" spacing="10">
-                <ImageView fx:id="profileImage" fitWidth="150" fitHeight="150" preserveRatio="true" style="-fx-border-color: black; -fx-border-width: 1;" />
-                <Button text="Change Picture" onAction="#onChangePictureClick" />
+                <ImageView onMouseClicked="#onProfileImageClick" fx:id="profileImage" fitWidth="150" fitHeight="150" preserveRatio="true" style="-fx-border-color: black; -fx-border-width: 1;" />
+                <Button fx:id="removePicture" text="Remove Picture" onAction="#onRemovePicture" />
             </VBox>
 
             <!-- Right side: Profile fields -->
@@ -25,7 +25,7 @@
                     <Label text="Password:" GridPane.rowIndex="2" GridPane.columnIndex="0" />
                     <PasswordField fx:id="passwordField" editable="false" GridPane.rowIndex="2" GridPane.columnIndex="1" />
                 </GridPane>
-                <Button text="Save" onAction="#onBackButtonClick" />
+                <Button text="Save" onAction="#onSave" />
             </VBox>
         </HBox>
     </VBox>
