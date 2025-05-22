@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 
 <?import javafx.geometry.Insets?>
-<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="app.controller.TestResultController" stylesheets="@../css/light-theme.css">
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="app.controller.TestResultController">
     <VBox fx:id="contentArea" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" spacing="10" alignment="CENTER">
         <padding>
             <Insets top="10" right="10" bottom="10" left="10"/>
@@ -19,7 +19,7 @@
             <TextField fx:id="publishedToField" maxWidth="300" editable="false" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
 
             <Label text="Note:" GridPane.rowIndex="1" GridPane.columnIndex="0" />
-            <TextField fx:id="noteField" maxWidth="300" editable="false" GridPane.rowIndex="1" GridPane.columnIndex="1" />
+            <TextArea fx:id="noteField" maxWidth="300" editable="false" GridPane.rowIndex="1" GridPane.columnIndex="1" />
 
             <Label text="Date:" GridPane.rowIndex="2" GridPane.columnIndex="0" />
             <TextField fx:id="dateField" maxWidth="300" editable="false" GridPane.rowIndex="2" GridPane.columnIndex="1" />

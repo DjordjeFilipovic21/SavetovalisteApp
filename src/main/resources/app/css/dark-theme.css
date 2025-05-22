@@ -60,6 +60,10 @@ ListView {
     -fx-padding: 5px;
 }
 
+ListView:hover {
+    -fx-cursor: hand;
+}
+
 .list-view .viewport {
     -fx-background-color: #2b2b2b;
 }
@@ -91,4 +95,52 @@ ImageView {
 ImageView:hover {
     -fx-effect: innershadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0.5, 0, 0);
     -fx-opacity: 0.8; /* Slightly dim the image */
+    -fx-cursor: hand;
 }
+
+DatePicker {
+    -fx-background-color: #3c3f41; /* Dark background */
+    -fx-text-fill: #ffffff;       /* Light text color */
+    -fx-border-color: #555555;   /* Border color */
+    -fx-border-radius: 5px;      /* Rounded corners */
+    -fx-background-radius: 5px;  /* Rounded corners */
+    -fx-padding: 5px;            /* Padding inside the field */
+}
+.text-area .content {
+    -fx-background-color: #3c3f41; /* Dark background for the content area */
+}
+
+TextArea {
+    -fx-background-color: #3c3f41; /* Dark background */
+    -fx-text-fill: #ffffff;       /* Light text color */
+    -fx-border-color: #555555;   /* Border color */
+    -fx-border-radius: 5px;      /* Rounded corners */
+    -fx-background-radius: 5px;  /* Rounded corners */
+    -fx-padding: 5px;            /* Padding inside the field */
+}
+
+.date-picker .text-field {
+    -fx-background-color: #3c3f41; /* Dark background for the text field */
+    -fx-text-fill: #ffffff;       /* Light text color */
+}
+
+.date-picker .arrow-button {
+    -fx-background-color: #3c3f41; /* Dark background for the arrow button */
+}
+
+.date-picker-popup .cell {
+    -fx-background-color: black; /* Set the background color of the day cells to black */
+    -fx-text-fill: white;        /* Set the text color to white for better contrast */
+}
+
+.date-picker-popup .cell:hover {
+    -fx-background-color: #555555; /* Optional: Change the hover color */
+}
+
+.date-picker-popup .cell:selected {
+    -fx-background-color: #4CAF50; /* Optional: Change the selected cell color */
+    -fx-text-fill: white;          /* Ensure text remains visible */
+}
+
+
+

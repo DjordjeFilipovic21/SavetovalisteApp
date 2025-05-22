@@ -49,6 +49,6 @@ public class PublishController {
         repo.savePublication(pub);
 
         System.out.println("Session published.");
-        AppRootController.getInstance().navigateToPage("/app/fxml/testResault.fxml");
+        TopBarController.getInstance().onUndoButtonClick();
     }
 }

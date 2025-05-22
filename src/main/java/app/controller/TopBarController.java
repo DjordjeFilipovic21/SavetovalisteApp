@@ -103,7 +103,7 @@ public class TopBarController {
     }
 
     @FXML
-    private void onUndoButtonClick() {
+    public void onUndoButtonClick() {
         if (!undoStack.isEmpty()) {
             String page = undoStack.pop();
             if(page.equalsIgnoreCase("/app/fxml/HomePage.fxml")) {

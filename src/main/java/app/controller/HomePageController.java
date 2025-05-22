@@ -35,9 +35,12 @@ public class HomePageController {
             @Override
             protected void updateItem(Session item, boolean empty) {
                 super.updateItem(item, empty);
-                setText(empty || item == null
-                        ? null
-                        : item.getTitle() + ": " + item.getDescription());
+                if (empty || item == null) {
+                    setText(null);
+                    setGraphic(null);
+                } else {
+                    setText(item.getTitle() + ": " + item.getDescription());
+                }
             }
         });
 

@@ -26,6 +26,8 @@ import java.util.Optional;
 
 public class TestResultController {
     @FXML
+    public javafx.scene.control.TextArea noteField;
+    @FXML
     private ListView<TestResult> resultsContainer;
 
     @FXML
@@ -39,9 +41,6 @@ public class TestResultController {
 
     @FXML
     private TextField publishedToField;
-
-    @FXML
-    private TextField noteField;
 
     @FXML
     private TextField dateField;
@@ -88,7 +87,7 @@ public class TestResultController {
             publishButton.setVisible(false);
         } else {
             publishedToField.clear();
-            noteField.clear();
+            noteField.setText("");
             dateField.clear();
             publishButton.setVisible(true);
         }

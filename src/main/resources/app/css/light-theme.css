@@ -59,6 +59,13 @@ ImageView:hover {
     -fx-cursor: hand;
 }
 
+ListView:hover {
+    -fx-cursor: hand;
+}
+
+
+
+
 
 
 

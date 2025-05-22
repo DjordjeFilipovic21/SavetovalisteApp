@@ -26,4 +26,5 @@ public class Session {
     public String getDescription() {
         return description;
     }
+
 }
