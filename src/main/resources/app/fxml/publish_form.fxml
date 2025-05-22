@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="10" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="app.controller.PublishController" stylesheets="@../css/light-theme.css">
+    <Label text="Date of publication:" />
+    <DatePicker fx:id="datePicker" />
+
+    <Label text="Publishing to:" />
+    <TextField fx:id="publishedToField" />
+
+    <Label text="Note:" />
+    <TextArea fx:id="noteField" prefRowCount="4"/>
+
+    <Button text="Publish" onAction="#handlePublish"/>
+</VBox >
