@@ -12,19 +12,10 @@ public class Publication {
     public Publication() {
     }
 
-    public Publication(int id, Session session, LocalDate publicationDate, String note, String publishedTo) {
-        this.id = id;
+    public Publication(Session session, LocalDate publicationDate, String note, String publishedTo) {
         this.session = session;
         this.publicationDate = publicationDate;
         this.note = note;
-        this.publishedTo = publishedTo;
-    }
-
-    public String getPublishedTo() {
-        return publishedTo;
-    }
-
-    public void setPublishedTo(String publishedTo) {
         this.publishedTo = publishedTo;
     }
 
@@ -32,31 +23,35 @@ public class Publication {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public Session getSession() {
         return session;
-    }
-
-    public void setSession(Session session) {
-        this.session = session;
     }
 
     public LocalDate getPublicationDate() {
         return publicationDate;
     }
 
-    public void setPublicationDate(LocalDate publicationDate) {
-        this.publicationDate = publicationDate;
-    }
-
     public String getNote() {
         return note;
     }
 
+    public String getPublishedTo() {
+        return publishedTo;
+    }
+
+    public void setSession(Session session) {
+        this.session = session;
+    }
+
+    public void setPublicationDate(LocalDate publicationDate) {
+        this.publicationDate = publicationDate;
+    }
+
     public void setNote(String note) {
         this.note = note;
+    }
+
+    public void setPublishedTo(String publishedTo) {
+        this.publishedTo = publishedTo;
     }
 }

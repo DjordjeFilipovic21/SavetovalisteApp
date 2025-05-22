@@ -6,15 +6,19 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox spacing="10" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="app.controller.PublishController" stylesheets="@../css/light-theme.css">
-    <Label text="Date of publication:" />
-    <DatePicker fx:id="datePicker" />
+<VBox fx:id="contentArea" spacing="20" alignment="CENTER" style="-fx-padding: 20; -fx-border-color: #cccccc; -fx-border-width: 1; -fx-border-radius: 10; -fx-background-radius: 10;" maxWidth="650" maxHeight="400" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="app.controller.PublishController" stylesheets="@../css/light-theme.css">
+    <VBox spacing="20">
+        <GridPane hgap="10" vgap="10">
+            <Label text="Date of publication:" GridPane.rowIndex="0" GridPane.columnIndex="0" />
+            <DatePicker fx:id="datePicker" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
 
-    <Label text="Publishing to:" />
-    <TextField fx:id="publishedToField" />
+            <Label text="Publishing to:" GridPane.rowIndex="1" GridPane.columnIndex="0" />
+            <TextField fx:id="publishedToField" GridPane.rowIndex="1" GridPane.columnIndex="1" />
 
-    <Label text="Note:" />
-    <TextArea fx:id="noteField" prefRowCount="4"/>
-
-    <Button text="Publish" onAction="#handlePublish"/>
+            <Label text="Note:" GridPane.rowIndex="2" GridPane.columnIndex="0" />
+            <TextArea fx:id="noteField" GridPane.rowIndex="2" GridPane.columnIndex="1" />
+        </GridPane>
+        <Button text="Publish" onAction="#handlePublish" />
+    </VBox>
 </VBox >
+

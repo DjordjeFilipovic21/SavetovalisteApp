@@ -5,6 +5,10 @@ public class Session {
     private String title;
     private String description;
 
+    public Session(int id) {
+        this.id = id;
+    }
+
     public Session(int id, String title, String description) {
         this.id = id;
         this.title = title;

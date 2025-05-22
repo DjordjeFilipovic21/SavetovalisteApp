@@ -6,9 +6,11 @@
 <?import javafx.scene.control.ListView?>
 <?import java.net.URL?>
 <?import javafx.scene.control.Button?>
-<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="app.controller.HomePageController">
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.TextField?>
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="app.controller.HomePageController" stylesheets="@../css/light-theme.css">
     <center>
-        <VBox fx:id="contentArea" style="-fx-alignment: center;">
+        <VBox fx:id="contentArea" style="-fx-alignment: center;" spacing="10">
             <ListView fx:id="sessionListView" />
         </VBox>
     </center>
