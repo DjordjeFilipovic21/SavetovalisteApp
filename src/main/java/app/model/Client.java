@@ -5,6 +5,9 @@ public class Client {
     private String firstName;
     private String lastName;
 
+    public Client() {
+    }
+
     public int getClientId() {
         return clientId;
     }

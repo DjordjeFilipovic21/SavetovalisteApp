@@ -8,24 +8,24 @@
 <VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="app.controller.PaymentOverviewController" stylesheets="@../css/light-theme.css">
     <VBox fx:id="contentArea" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" spacing="10" alignment="CENTER">
         <Label text="Clients payments and debts" style="-fx-font-size: 40px; -fx-font-weight: bold;"/>
-        <TableView fx:id="overviewTable" prefHeight="300">
+        <TableView fx:id="overviewTable" prefHeight="250">
             <columns>
-                <TableColumn fx:id="clientCol" text="Client" />
-                <TableColumn fx:id="totalCol" text="Client already paid" />
-                <TableColumn fx:id="pendingCol" text="Debt" />
+                <TableColumn fx:id="clientCol" text="Client" maxWidth="300"/>
+                <TableColumn fx:id="totalCol" text="Client already paid" maxWidth="300"/>
+                <TableColumn fx:id="pendingCol" text="Debt" maxWidth="300"/>
             </columns>
         </TableView>
 
         <Label text="Payments informations:" style="-fx-font-size: 40px; -fx-font-weight: bold;"/>
-        <TableView fx:id="detailTable" prefHeight="200">
+        <TableView fx:id="detailTable" prefHeight="250">
             <columns>
-                <TableColumn fx:id="dtClientCol" text="Client" />
-                <TableColumn fx:id="dtDateCol" text="Date" />
-                <TableColumn fx:id="dtAmountCol" text="Amount" />
-                <TableColumn fx:id="dtCurrencyCol" text="Currency" />
-                <TableColumn fx:id="dtMethodCol" text="Payment method" />
-                <TableColumn fx:id="dtInstCol" text="First payment?" />
-                <TableColumn fx:id="dtPurposeCol" text="Note" />
+                <TableColumn fx:id="dtClientCol" text="Client" maxWidth="200"/>
+                <TableColumn fx:id="dtDateCol" text="Date" maxWidth="200"/>
+                <TableColumn fx:id="dtAmountCol" text="Amount" maxWidth="200"/>
+                <TableColumn fx:id="dtCurrencyCol" text="Currency" maxWidth="200"/>
+                <TableColumn fx:id="dtMethodCol" text="Payment method" maxWidth="200"/>
+                <TableColumn fx:id="dtInstCol" text="First payment?" maxWidth="200"/>
+                <TableColumn fx:id="dtPurposeCol" text="Note" maxWidth="200"/>
             </columns>
         </TableView>
     </VBox>

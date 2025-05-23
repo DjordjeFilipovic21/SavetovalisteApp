@@ -12,6 +12,9 @@ public class Payment {
     private boolean firstInstallment;
     private String purpose;
 
+    public Payment() {
+    }
+
     public int getPaymentId() {
         return paymentId;
     }

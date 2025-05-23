@@ -62,7 +62,7 @@ public class PaymentOverviewController {
         totalCol.setCellValueFactory(new PropertyValueFactory<>("totalPaid"));
         pendingCol.setCellValueFactory(cell -> {
             boolean pending = cell.getValue().isHasPendingSecondInstallment();
-            return new ReadOnlyStringWrapper(pending ? "Da" : "Ne");
+            return new ReadOnlyStringWrapper(pending ? "Yes" : "No");
         });
 
         try {
@@ -74,11 +74,10 @@ public class PaymentOverviewController {
     }
 
     public void showAllPayments(){
-        dtClientCol.setCellValueFactory(cell ->
-                new ReadOnlyStringWrapper(cell.getValue().getClient().getFullName()));
+        dtClientCol.setCellValueFactory(cell -> new ReadOnlyStringWrapper(cell.getValue().getClient().getFullName()));
         dtDateCol.setCellValueFactory(new PropertyValueFactory<>("paymentDate"));
         dtAmountCol.setCellValueFactory(new PropertyValueFactory<>("amount"));
-        dtCurrencyCol.setCellValueFactory(new PropertyValueFactory<>("currencyCode"));
+        dtCurrencyCol.setCellValueFactory(new PropertyValueFactory<>("currencyInitial"));
         dtMethodCol.setCellValueFactory(new PropertyValueFactory<>("paymentMethod"));
         dtInstCol.setCellValueFactory(new PropertyValueFactory<>("firstInstallment"));
         dtPurposeCol.setCellValueFactory(new PropertyValueFactory<>("purpose"));

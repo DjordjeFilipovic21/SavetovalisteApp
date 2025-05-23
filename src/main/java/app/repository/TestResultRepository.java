@@ -15,18 +15,18 @@ public class TestResultRepository extends CustomRepository{
     public List<TestResult> getResultsForSession(int sessionId) {
         List<TestResult> results = new ArrayList<>();
         String sql = """
-        SELECT 
-            tr.id AS tr_id,
-            s.ses_id AS session_id,
-            s.ses_title AS session_title,
-            s.ses_desc AS session_desc,
-            t.id AS test_id,
-            t.name AS test_name,
-            tr.result_value
-        FROM test_result tr
-        JOIN sessions s ON tr.session_id = s.ses_id
-        JOIN test t ON tr.test_id = t.id
-        WHERE s.ses_id = ?
+            SELECT 
+                tr.id AS tr_id,
+                s.ses_id AS session_id,
+                s.ses_title AS session_title,
+                s.ses_desc AS session_desc,
+                t.id AS test_id,
+                t.name AS test_name,
+                tr.result_value
+            FROM test_result tr
+            JOIN sessions s ON tr.session_id = s.ses_id
+            JOIN test t ON tr.test_id = t.id
+            WHERE s.ses_id = ?
         """;
 
         try (Connection conn = getConnection();
