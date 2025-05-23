@@ -71,7 +71,27 @@ public class ProfilePageController {
 
     @FXML
     private void onSave() {
+        String username = usernameField.getText();
+        String fullName = fullNameField.getText();
+        String password = passwordField.getText();
 
+        if (username.isEmpty() || fullName.isEmpty() || password.isEmpty()) {
+            TopBarController.getInstance().showErrorAlert("Empty error","Sva polja moraju biti popunjena.");
+            return;
+        }
+
+        Integer userId = TopBarController.getInstance().getUserId();
+        if (userId != null) {
+            Psychotherapist psychotherapist = new Psychotherapist();
+            psychotherapist.setPsyId(userId);
+            psychotherapist.setUsername(username);
+            psychotherapist.setFullName(fullName);
+            psychotherapist.setPassword(password);
+            psychotherapeutRepository.updatePsychotherapist(psychotherapist);
+            TopBarController.getInstance().onUndoButtonClick();
+        } else {
+            TopBarController.getInstance().showErrorAlert("Save error","Greska pri cuvanju.");
+        }
     }
 
     @FXML void onRemovePicture() {

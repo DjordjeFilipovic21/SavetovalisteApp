@@ -1,5 +1,6 @@
 package app.controller;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.layout.VBox;
 
@@ -28,6 +29,7 @@ public class MainPageController {
     }
 
 
-
-
+    public void onPsychoTherapeutButtonClick(ActionEvent actionEvent) {
+        AppRootController.getInstance().navigateToPage("/app/fxml/PsychotherapeutForm.fxml");
+    }
 }

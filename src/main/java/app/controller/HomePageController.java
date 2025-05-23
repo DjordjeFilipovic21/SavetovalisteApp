@@ -1,37 +1,34 @@
 package app.controller;
 
 import app.model.Session;
-import app.model.Test;
-import app.model.TestResult;
+import app.repository.PsychotherapeutRepository;
 import app.repository.SessionRepository;
-import app.repository.TestResultRepository;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.VBox;
-import javafx.scene.control.Label;
-import javafx.geometry.Insets;
-import javafx.stage.Stage;
-import javafx.scene.control.Button;
 
-import java.awt.*;
-import java.io.IOException;
+import java.time.ZoneId;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class HomePageController {
     @FXML
     private VBox contentArea;
 
+
     @FXML
-    private ListView<Session> sessionListView;
+    private ListView<Session> pastSessionsListView;
+
+    @FXML
+    private ListView<Session> upcomingSessionsListView;
 
     @FXML
     private void initialize() {
         TopBarController.getInstance().setContentArea(contentArea);
-        sessionListView.setCellFactory(lv -> new ListCell<>() {
+
+        // Set cell factories for both ListViews
+        pastSessionsListView.setCellFactory(lv -> new ListCell<>() {
             @Override
             protected void updateItem(Session item, boolean empty) {
                 super.updateItem(item, empty);
@@ -44,9 +41,21 @@ public class HomePageController {
             }
         });
 
-        loadSessions();
+        upcomingSessionsListView.setCellFactory(lv -> new ListCell<>() {
+            @Override
+            protected void updateItem(Session item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setText(null);
+                    setGraphic(null);
+                } else {
+                    setText(item.getTitle() + ": " + item.getDescription());
+                }
+            }
+        });
 
-        sessionListView.getSelectionModel().selectedItemProperty()
+        // Add selection listener to pastSessionsListView
+        pastSessionsListView.getSelectionModel().selectedItemProperty()
                 .addListener((obs, oldSel, newSel) -> {
                     if (newSel != null) {
                         TestResultController.setCurrentSession(newSel);
@@ -54,19 +63,55 @@ public class HomePageController {
                         AppRootController.getInstance().navigateToPage("/app/fxml/testResault.fxml");
                     }
                 });
+
+        loadSessions();
     }
 
     @FXML
     private void loadSessions() {
+        PsychotherapeutRepository psychotherapeutRepo = new PsychotherapeutRepository();
+        List<Integer> psyIds = psychotherapeutRepo.getAllPsychotherapistIdsBySupervisorId(TopBarController.getInstance().getUserId());
         SessionRepository sessionDAO = new SessionRepository();
-        List<Session> sessions = sessionDAO.getAllSessions();
-        sessionListView.getItems().setAll(sessions);
+        List<Session> sessions = new ArrayList<>();
+        if (!psyIds.isEmpty()) {
+            for (Integer psyId : psyIds) {
+                sessions.addAll(sessionDAO.getAllSessions(psyId));
+            }
+        }
+        sessions.addAll(sessionDAO.getAllSessions(TopBarController.getInstance().getUserId()));
+
+        List<Session> pastSessions = new ArrayList<>();
+        List<Session> upcomingSessions = new ArrayList<>();
+        for (Session session : sessions) {
+            if (session.getDate().before(java.util.Date.from(java.time.LocalDate.now().atStartOfDay(ZoneId.systemDefault()).toInstant()))) {
+                pastSessions.add(session);
+            } else {
+                upcomingSessions.add(session);
+            }
+        }
+
+        if (pastSessions.isEmpty()) {
+            pastSessionsListView.setPlaceholder(new javafx.scene.control.Label("No past sessions"));
+        } else {
+            pastSessionsListView.setPlaceholder(null);
+            pastSessionsListView.getItems().setAll(pastSessions);
+        }
+
+        if (upcomingSessions.isEmpty()) {
+            upcomingSessionsListView.setPlaceholder(new javafx.scene.control.Label("No upcoming sessions"));
+        } else {
+            upcomingSessionsListView.setPlaceholder(null);
+            upcomingSessionsListView.getItems().setAll(upcomingSessions);
+        }
+
+
     }
 
     @FXML
     private void goToPaymentOverview(){
         AppRootController.getInstance().navigateToPage("/app/fxml/paymentsOverview.fxml");
     }
+
 
 
 }

@@ -5,6 +5,7 @@ import app.model.PaymentOverview;
 import app.repository.PaymentRepository;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.fxml.FXML;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -52,6 +53,10 @@ public class PaymentOverviewController {
     private TableColumn<Payment, String> dtPurposeCol;
 
     @FXML
+    private TableColumn<Payment, String> dtValidCol;
+
+
+    @FXML
     private VBox contentArea;
 
     @FXML
@@ -66,7 +71,7 @@ public class PaymentOverviewController {
         });
 
         try {
-            List<PaymentOverview> overview = repo.getPaymentOverview();
+            List<PaymentOverview> overview = repo.getPaymentOverview(TopBarController.getInstance().getUserId());
             overviewTable.getItems().setAll(overview);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -81,9 +86,10 @@ public class PaymentOverviewController {
         dtMethodCol.setCellValueFactory(new PropertyValueFactory<>("paymentMethod"));
         dtInstCol.setCellValueFactory(new PropertyValueFactory<>("firstInstallment"));
         dtPurposeCol.setCellValueFactory(new PropertyValueFactory<>("purpose"));
+        dtValidCol.setCellValueFactory(new PropertyValueFactory<>("valid"));
 
         try {
-            List<Payment> details = repo.getAllPayments();
+            List<Payment> details = repo.getAllPayments(TopBarController.getInstance().getUserId());
             detailTable.getItems().setAll(details);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -95,5 +101,20 @@ public class PaymentOverviewController {
         showClientPayment();
         showAllPayments();
         TopBarController.getInstance().setContentArea(contentArea);
+        detailTable.setRowFactory(tv -> new TableRow<Payment>() {
+            @Override
+            protected void updateItem(Payment item, boolean empty) {
+                super.updateItem(item, empty);
+                if (item == null || empty) {
+                    setStyle(""); // Reset style for empty rows
+                } else if ("Invalid".equals(item.getValid())) {
+                    setStyle("-fx-background-color: #e37192;"); // Set background color to red for invalid rows
+                } else {
+                    setStyle(""); // Reset style for other rows
+                }
+            }
+        });
+        overviewTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        detailTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
     }
 }

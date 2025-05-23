@@ -11,7 +11,7 @@
         <TableView fx:id="overviewTable" prefHeight="250">
             <columns>
                 <TableColumn fx:id="clientCol" text="Client" maxWidth="300"/>
-                <TableColumn fx:id="totalCol" text="Client already paid" maxWidth="300"/>
+                <TableColumn fx:id="totalCol" text="Client already paid (EUR)" maxWidth="300"/>
                 <TableColumn fx:id="pendingCol" text="Debt" maxWidth="300"/>
             </columns>
         </TableView>
@@ -26,6 +26,7 @@
                 <TableColumn fx:id="dtMethodCol" text="Payment method" maxWidth="200"/>
                 <TableColumn fx:id="dtInstCol" text="First payment?" maxWidth="200"/>
                 <TableColumn fx:id="dtPurposeCol" text="Note" maxWidth="200"/>
+                <TableColumn fx:id="dtValidCol" text="Status" maxWidth="200"/>
             </columns>
         </TableView>
     </VBox>

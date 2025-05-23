@@ -142,5 +142,53 @@ TextArea {
     -fx-text-fill: white;          /* Ensure text remains visible */
 }
 
+TableView {
+    -fx-background-color: #2b2b2b; /* Dark background for the table */
+    -fx-border-color: #444444;     /* Border color */
+    -fx-border-radius: 5px;        /* Rounded corners */
+    -fx-padding: 5px;              /* Padding around the table */
+}
+
+/* Style the TableView rows (cells) */
+.table-row-cell {
+    -fx-background-color: #2b2b2b; /* Dark background for rows */
+    -fx-text-fill: #ffffff;        /* Light text color */
+    -fx-border-color: #444444;    /* Border between rows */
+}
+/* Ensure text in table cells is white */
+.table-cell {
+    -fx-text-fill: #ffffff; /* Light text color */
+}
+
+.table-row-cell:filled:hover {
+    -fx-background-color: #3c3f41; /* Highlight row on hover */
+}
+
+.table-row-cell:empty {
+    -fx-background-color: transparent; /* No background for empty rows */
+}
+
+/* Style the TableView headers */
+.table-view .column-header {
+    -fx-background-color: #3c3f41; /* Dark background for headers */
+    -fx-text-fill: #ffffff;        /* Light text color for header text */
+    -fx-border-color: #555555;    /* Border color for headers */
+    -fx-font-weight: bold;        /* Bold text for headers */
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: #ffffff;        /* Ensure header text is white */
+}
+
+/* Style the TableView headers */
+.table-view .column-header-background {
+    -fx-background-color: #3c3f41; /* Dark background for header area */
+    -fx-border-color: #555555;    /* Optional: Border color for the header */
+}
+
+.table-view .placeholder {
+    -fx-background-color: #3c3f41; /* Dark background for empty header or table */
+    -fx-text-fill: #ffffff;        /* Optional: Text color for placeholder text */
+}
 
 

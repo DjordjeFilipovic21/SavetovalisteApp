@@ -12,7 +12,8 @@
             <Label text="SAVETOVALIŠTE" style="-fx-font-size: 50px; -fx-font-weight: bold;"/>
             <Label text="NOVI POČETAK" style="-fx-font-size: 35px; -fx-font-style: italic;"/>
             <Button text="Login" fx:id="loginButton" onAction="#onLoginButtonClick"/>
-            <Button text="Sign In" fx:id="signInButton" onAction="#onSignInButtonClick"/>
+            <Button text="Sign Up" fx:id="signInButton" onAction="#onSignInButtonClick"/>
+            <Button text="Psychotherapeuts" fx:id="psychotherapeutsList" onAction="#onPsychoTherapeutButtonClick"/>
         </VBox>
     </center>
 </BorderPane>

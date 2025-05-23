@@ -11,6 +11,7 @@ public class Payment {
     private String paymentMethod;
     private boolean firstInstallment;
     private String purpose;
+    private String valid;
 
     public Payment() {
     }
@@ -77,5 +78,13 @@ public class Payment {
 
     public void setPurpose(String purpose) {
         this.purpose = purpose;
+    }
+
+    public String getValid() {
+        return valid;
+    }
+
+    public void setValid(String valid) {
+        this.valid = valid;
     }
 }

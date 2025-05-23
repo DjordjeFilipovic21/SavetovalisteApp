@@ -28,7 +28,7 @@ public class AppRoot {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/app/fxml/AppRoot.fxml"));
             Parent root = loader.load();
             Scene scene = new Scene(root, 1280, 720);
-            stage.setTitle("Main Page");
+            stage.setTitle("SavetovalisteApp");
             stage.setScene(scene);
         } catch (IOException e) {
             e.printStackTrace();
