@@ -1,14 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
-<?import javafx.scene.layout.*?>
-
-<?xml version="1.0" encoding="UTF-8"?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.VBox?>
-
+<?import javafx.scene.layout.*?>
 <VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="app.controller.PaymentOverviewController" stylesheets="@../css/light-theme.css">
-    <VBox fx:id="contentArea" spacing="10" padding="10">
+    <VBox fx:id="contentArea" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" spacing="10" alignment="CENTER">
         <Label text="Clients payments and debts" style="-fx-font-size: 40px; -fx-font-weight: bold;"/>
         <TableView fx:id="overviewTable" prefHeight="300">
             <columns>
