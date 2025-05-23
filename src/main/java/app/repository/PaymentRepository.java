@@ -15,20 +15,7 @@ public class PaymentRepository extends CustomRepository{
         listPayments.clear();
 
         String sql = """
-            SELECT\s
-                p.payment_id          AS paymentId,
-                p.payment_date        AS paymentDate,
-                p.amount              AS amount,
-                p.currency_inital     AS currencyInitial,
-                p.payment_method      AS paymentMethod,
-                p.is_first_installment AS firstInstallment,
-                p.purpose             AS purpose,
-                c.client_id           AS clientId,
-                c.first_name          AS firstName,
-                c.last_name           AS lastName
-            FROM payment p
-            JOIN client c ON p.client_id = c.client_id
-            ORDER BY c.last_name, p.payment_date
+                SELECT * from view_name
             """;
 
 
@@ -47,7 +34,7 @@ public class PaymentRepository extends CustomRepository{
                 p.setClient(c);
                 p.setPaymentDate(rs.getDate("paymentDate").toLocalDate());
                 p.setAmount(rs.getDouble("amount"));
-                p.setCurrencyInitial(rs.getString("currencyInital"));
+                p.setCurrencyInitial(rs.getString("currencyInitial"));
                 p.setPaymentMethod(rs.getString("paymentMethod"));
                 p.setFirstInstallment(rs.getBoolean("isFirstInstallment"));
                 p.setPurpose(rs.getString("purpose"));
@@ -61,15 +48,15 @@ public class PaymentRepository extends CustomRepository{
 
     public List<PaymentOverview> getPaymentOverview() throws SQLException {
         String sql = """
-            SELECT\s
-                c.client_id        AS clientId,
-                CONCAT(c.first_name, ' ', c.last_name) AS clientName,
-                SUM(p.amount)      AS totalPaid,
-                SUM(CASE WHEN p.is_first_installment THEN 1 ELSE 0 END) AS firstCnt,
-                SUM(CASE WHEN NOT p.is_first_installment THEN 1 ELSE 0 END) AS secondCnt
-            FROM payment p
-            JOIN client c ON p.client_id = c.client_id
-            GROUP BY c.client_id, c.first_name, c.last_name
+                SELECT
+                            c.client_id        AS clientId,
+                            CONCAT(c.first_name, ' ', c.last_name) AS clientName,
+                            SUM(p.amount)      AS totalPaid,
+                            SUM(CASE WHEN p.installment_number THEN 1 ELSE 0 END) AS firstCnt,
+                            SUM(CASE WHEN NOT p.installment_number THEN 1 ELSE 0 END) AS secondCnt
+                        FROM payment p
+                        JOIN client c ON p.client_id = c.client_id
+                        GROUP BY c.client_id, c.first_name, c.last_name
             """;
 
         try (Connection conn = getConnection();
