@@ -1,0 +1,34 @@
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.layout.*?>
+
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="app.controller.PaymentOverviewController" stylesheets="@../css/light-theme.css">
+    <VBox fx:id="contentArea" spacing="10" padding="10">
+        <Label text="Clients payments and debts" style="-fx-font-size: 40px; -fx-font-weight: bold;"/>
+        <TableView fx:id="overviewTable" prefHeight="300">
+            <columns>
+                <TableColumn fx:id="clientCol" text="Client" />
+                <TableColumn fx:id="totalCol" text="Client already paid" />
+                <TableColumn fx:id="pendingCol" text="Debt" />
+            </columns>
+        </TableView>
+
+        <Label text="Payments informations:" style="-fx-font-size: 40px; -fx-font-weight: bold;"/>
+        <TableView fx:id="detailTable" prefHeight="200">
+            <columns>
+                <TableColumn fx:id="dtClientCol" text="Client" />
+                <TableColumn fx:id="dtDateCol" text="Date" />
+                <TableColumn fx:id="dtAmountCol" text="Amount" />
+                <TableColumn fx:id="dtCurrencyCol" text="Currency" />
+                <TableColumn fx:id="dtMethodCol" text="Payment method" />
+                <TableColumn fx:id="dtInstCol" text="First payment?" />
+                <TableColumn fx:id="dtPurposeCol" text="Note" />
+            </columns>
+        </TableView>
+    </VBox>
+</VBox>

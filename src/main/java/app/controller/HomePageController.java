@@ -63,5 +63,10 @@ public class HomePageController {
         sessionListView.getItems().setAll(sessions);
     }
 
+    @FXML
+    private void goToPaymentOverview(){
+        AppRootController.getInstance().navigateToPage("/app/fxml/paymentsOverview.fxml");
+    }
+
 
 }

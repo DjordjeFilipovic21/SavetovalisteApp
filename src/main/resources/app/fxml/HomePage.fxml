@@ -8,10 +8,11 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.control.TextField?>
-<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="app.controller.HomePageController" >
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="app.controller.HomePageController" stylesheets="@../css/light-theme.css" >
     <center>
         <VBox fx:id="contentArea" style="-fx-alignment: center;" spacing="10">
             <ListView fx:id="sessionListView" />
+            <Button fx:id="paymentOverview" text="Clients payment details" styleClass="payment-details" onAction="#goToPaymentOverview"/>
         </VBox>
     </center>
 </BorderPane>
